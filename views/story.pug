@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  main
+    .container
+      h1 blabla
+      if story
+        p.lead= story.body
+        ul.list
+          each link in links
+            li= link.description

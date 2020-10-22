@@ -3,15 +3,14 @@ const router = express.Router();
 const {pool, query} = require('../models/db');
 
 router.get('/', function(req, res, next) {
-  res.render('story');
 
-  pool.query(sql, function (err, result, fields) {
+ /* pool.query(sql, function (err, result, fields) {
     if (err) throw err;
     res.json({
       status: 200,
       result: result
     });
-  });
+  });*/
 });
 
 router.get('/:id', async function (req, res, next) {
@@ -26,9 +25,11 @@ router.get('/:id', async function (req, res, next) {
       req.params.id
     );
 
+    console.log(story)
+
     res.render('story', {
       id: req.params.id,
-      story: story,
+      story: story[0],
       links: links
     });
 
